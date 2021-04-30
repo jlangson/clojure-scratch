@@ -1,9 +1,16 @@
 (ns play-digits)
 
 (defn dig-pow [n p]
+  (let ex (exponents n p))
   (->>
     (digits n)
     (map #(Math/pow % p))))
+
+;(defn dig-pow2 [n p]
+;  (loop [i 0
+;         pow p]
+;    (sum
+;      (recur ))))
 
 ;(defn digits [string]
 ;  (--> string
@@ -13,6 +20,9 @@
 (defn digits [number]
 "returns a sequence of digits from a number"
   (mapv #(Integer/parseInt %) (clojure.string/split (str number) #"")))
+
+(defn exponents [n p]
+  (range p (inc (count (digits n)))))
 
 (defn test [string]
   (print string " it prints from ns"))
