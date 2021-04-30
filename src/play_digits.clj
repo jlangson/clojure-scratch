@@ -1,10 +1,32 @@
 (ns play-digits)
 
+(defn digits [number]
+  "returns a vector of digits from a number"
+  (mapv #(Integer/parseInt %) (clojure.string/split (str number) #"")))
+
+(defn exponents [n p]
+  (range p (inc (count (digits n)))))
+
+(defn expt [a b]
+  (int (Math/pow a b)))
+
 (defn dig-pow [n p]
-  (let ex (exponents n p))
-  (->>
-    (digits n)
-    (map #(Math/pow % p))))
+  (dotimes [i (count (digits (n)))]
+    ( )))
+
+(defn expt-vectors [n p]
+  (map expt n p))
+
+;(defn dig-pow [n p]
+;  (dotimes [i (count (digits n))]
+;    ()))
+
+;(defn dig-pow [n p]
+;  (->>
+;    (digits n)
+;    (map #(Math/pow % %) exponents (n p))
+;    (map #(Math/pow % p))))
+
 
 ;(defn dig-pow2 [n p]
 ;  (loop [i 0
@@ -17,15 +39,9 @@
 ;    (clojure.string/split string #"")
 ;    (map #(Integer/parseInt %))))
 
-(defn digits [number]
-"returns a sequence of digits from a number"
-  (mapv #(Integer/parseInt %) (clojure.string/split (str number) #"")))
 
-(defn exponents [n p]
-  (range p (inc (count (digits n)))))
 
-(defn test [string]
-  (print string " it prints from ns"))
+
 ;Some numbers have funny properties. For example:
 ;
 ;89 --> 8¹ + 9² = 89 * 1
