@@ -6,4 +6,4 @@
     ))
 
 (defn palindrome? [n]
- (= (seq (str n) (reverse (seq(str n))))))
+ (= (seq (str n)) (reverse (seq(str n)))))
